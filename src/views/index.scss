@@ -1,0 +1,120 @@
+.dashboard {
+  height: 100%;
+  width: 100%;
+  background-image: url("/image/background.webp");
+  overflow: hidden;
+
+  .header {
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  &-grid {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 12px;
+    box-sizing: border-box;
+    // n-grid 本身需要固定高度，防止内容撑出屏幕
+    overflow: hidden;
+
+    // 穿透 naive-ui grid 容器，让其高度受控
+    :deep(.n-grid) {
+      height: 100% !important;
+      grid-auto-rows: 100%;
+    }
+
+    // n-gi 单元格高度撑满
+    :deep(.n-gi) {
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    &-item {
+      height: 100%;
+      width: 100%;
+
+      .card-grid {
+        height: 100%;
+        width: 100%;
+
+        &-item {
+          height: 100%;
+          width: 100%;
+
+          .card {
+            height: 100%;
+            width: 100%;
+
+            .camera {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              aspect-ratio: auto;
+              object-fit: cover;
+            }
+
+            .card-content {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+              position: relative;
+            }
+
+            .icon {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+              position: relative;
+            }
+          }
+
+          .params {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+:deep(.n-spin-content) {
+  width: 100%;
+  height: 100% !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+:deep(.n-card) {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+// 左侧表格card内容区自动撑满
+.table-card {
+  :deep(.n-card__content) {
+    height: calc(100% - 42px);
+    padding: 8px 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}
+
